@@ -1,0 +1,18 @@
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main2);
+
+    SQLiteDatabase mydatabase = openOrCreateDatabase("db", MODE_PRIVATE, null);
+
+    Cursor resultSet = mydatabase.rawQuery("Select * from TutorialsPoint", null);
+    resultSet.moveToFirst();
+    String username = resultSet.getString(0);
+    String password = resultSet.getString(1);
+
+    TextView txtUnm = findViewById(R.id.textView);
+    TextView txtPwd = findViewById(R.id.textView2);
+
+    txtUnm.setText(username);
+    txtPwd.setText(password);
+}
